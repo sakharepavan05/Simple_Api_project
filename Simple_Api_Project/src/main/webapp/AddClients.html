@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Client</title>
+<link rel="stylesheet" type="text/css" href="CSS/Clients.css">
+</head>
+<body>
+   <body>
+    <div class="container">
+        <h2>Create Client</h2>
+        <form id="clientForm" onsubmit="  validateForm()" action="AddClients_Handler" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="user">User:</label>
+            <input type="text" id="user" name="user" required>
+            <label for="company">Company:</label>
+           
+            <select id="company" name="company" required>
+                <option value="">Select Company</option>
+                <option value="Google">Google</option>
+                <option value="Infosys">Infosys</option>
+              
+            </select>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+      
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Perform email validation
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Perform phone number validation
+            var phone = document.getElementById("phone").value;
+            var phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a 10-digit phone number.");
+                return false;
+            }
+
+
+            return true; // Form submission allowed
+        }
+    </script>
+</body>
+</html>
